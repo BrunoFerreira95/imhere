@@ -1,9 +1,11 @@
-import { Text, TextInput, View, TouchableOpacity } from 'react-native'
+import { Text, TextInput, View, TouchableOpacity, ScrollView } from 'react-native'
 import { styles } from './styles'
 
 import { Participant } from '../../components/Participant'
 
 export function Home() {
+  const participants = ['Bruno', 'Diego', 'ANA', 'João', 'Vini', 'Rodrigo', 'Beth', 'Rogerio', 'Odete', 'Francisco', 'Aline']
+
   function handleParticipantAdd(){
     console.log("Você clicou no botão de Adicionar!")
   }
@@ -32,7 +34,19 @@ export function Home() {
           </Text>
         </TouchableOpacity>
       </View>
-      <Participant name="Bruno" onRemove={() => handlePrticipantRemove("Bruno")}/>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {
+          participants.map(participant => (
+            <Participant
+              key={participant}
+              name={participant}
+              onRemove={() => handlePrticipantRemove("Bruno")}
+            />
+          ))
+        }
+      </ScrollView>
+
+
     </View>
   )
 }
