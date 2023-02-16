@@ -18,11 +18,11 @@ export function Home() {
   }
 
   function handlePrticipantRemove(name: string){
-    console.log(`Você clicou em remover o participante ${name}`)
+    
     Alert.alert('Remover', `Remover o participante ${name}`, [
       {
         text: 'Sim',
-        onPress: () => Alert.alert('Deletado')
+        onPress: () => setParticipants(prevState => prevState.filter(participant => participant !== name))
       },
       {
         text: 'Não',
@@ -60,7 +60,7 @@ export function Home() {
           <Participant
             key={item}
             name={item}
-            onRemove={() => handlePrticipantRemove("Bruno")}
+            onRemove={() => handlePrticipantRemove(item)}
           />
 
         )}
